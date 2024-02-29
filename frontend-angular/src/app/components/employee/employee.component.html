@@ -1,0 +1,53 @@
+<div class="container mx-auto mt-2 row">
+    <div class="col-md-4">
+        <form #employeeForm="ngForm" (ngSubmit)="addEmployee(employeeForm)">
+            <div class="form-group mb-3">
+                <input type="text" name="name" class="form-control" placeholder="Enter name" [(ngModel)]="new_employee.name">
+                <!-- <div class="valid-feedback">Success! You've done it.</div> -->
+            </div>
+            <div class="form-group mb-3">
+                <input type="text" name="position" class="form-control" placeholder="Enter position" [(ngModel)]="new_employee.position">
+                <!-- <div class="invalid-feedback">Sorry, that username's taken. Try another?</div> -->
+            </div>
+            <div class="form-group mb-3">
+                <input type="text" name="office" class="form-control" placeholder="Enter office" [(ngModel)]="new_employee.office">
+                <!-- <div class="valid-feedback">Success! You've done it.</div> -->
+            </div>
+            <div class="form-group mb-3">
+                <input type="number" name="salary" class="form-control" placeholder="Enter salary" [(ngModel)]="new_employee.salary">
+                <!-- <div class="invalid-feedback">Sorry, that username's taken. Try another?</div> -->
+            </div>
+            <button class="btn btn-primary"> Save </button>
+            <button class="btn btn-secondary" (click)="cleanForm(employeeForm)"> Clean </button>
+        </form>
+    </div>
+    <div class="col-md-8">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Position</th>
+                    <th scope="col">Office</th>
+                    <th scope="col">Salary</th>
+                    <th scope="col">Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="table-active" *ngFor="let employee of employees">
+                    <th scope="row"> {{ employee.name }} </th>
+                    <td> {{ employee.office }} </td>
+                    <td> {{ employee.position }} </td>
+                    <td> {{ employee.salary }} </td>
+                    <td> <button type="button" class="btn btn-warning btn-sm" (click)="editEmployeeForm(employee)"> <i class="material-icons"> build </i>
+                        </button>
+                        <button type="button" class="btn btn-danger btn-sm" (click)="deleteModal(employee._id)"> <i class="material-icons"> cancel </i>
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
